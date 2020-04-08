@@ -112,7 +112,7 @@ function efDrawioParserFunction_Render( &$parser, $name = null, $width = null, $
 		
 			'<input type="hidden" id="drawio-xml" value="'.htmlspecialchars($xml).'">'.  
 			'<input type="hidden" id="drawio-name" value="'.htmlspecialchars($name).'">'.
-			'<input type="hidden" id="drawio-upload-url" value="http://'.$_SERVER['HTTP_HOST'].$uploadURL.'">'.
+			'<input type="hidden" id="drawio-upload-url" value="https://'.$_SERVER['HTTP_HOST'].$uploadURL.'">'.
 			'<input type="hidden" id="drawio-close-url" value="'.$_SERVER['HTTP_REFERER'].'"/>'.		
 		
 			'<div id="resizable" style="width:100%;height:600px">'.
@@ -168,12 +168,12 @@ function efDrawioParserFunction_Render( &$parser, $name = null, $width = null, $
                 (($height != null) ? 'height:'.$height.'px;' : '').'"'.
                 '>'.htmlspecialchars($name).'</div>';
         } else {
-            $output .= '<a href="/index.php/Image:' . $image_name.'">';
+             $output .= '<a href="'.$wgScriptPath.'/index.php/Image:' . $image_name.'">';
             // Note: We append the timestamp of the image to the
             //       view URL as a query string. This way, we ensure,
             //       that the browser always displays the last edited version
             //       of the image
-            $output .= '<img src="' . $image->getViewUrl().
+            $output .= '</br><img src="' . $image->getViewUrl(). '"></img>';
                     '?version='.$image->nextHistoryLine()->img_timestamp.'" '.
                 (($width != null) ? 'width="'.$width.'" ' : '').
                 (($height != null) ? 'height="'.$height.'" ' : '').
